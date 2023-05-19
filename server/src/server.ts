@@ -1,23 +1,14 @@
 import Fastify from "fastify";
 import cors from "@fastify/cors"
-import { PrismaClient } from "@prisma/client";
+import { memoriesRoutes } from "./routes/memories";
 
 const app = Fastify()
-const prisma = new PrismaClient()
 
 app.register(cors, {
-    origin: ["https://localhost:8080"]
+    origin: ["https://localhost:3000"]
 }) // Aqui posso colocar quais endereços do front podem acessar o back
 
-app.get('/users', async (req, res) => {
-   const users = await prisma.user.findMany({
-    where:{
-        name: "Catiza"
-    }
-   })
-
-   res.send(users)
-})
+app.register(memoriesRoutes)
 
 app.listen({
     port: 8080 
