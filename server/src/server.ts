@@ -20,7 +20,7 @@ app.register(memoriesRoutes)
 app.register(authRoutes)
 
 app.listen({
-    port: 8080 
+    port: 3333 
 }).then(() => {
-    console.log("Servidor rodando na porta 8080")
+    console.log("Servidor rodando na porta 3333")
 })
